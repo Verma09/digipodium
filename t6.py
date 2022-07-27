@@ -1,0 +1,26 @@
+from turtle import *
+penup()
+goto(-300,300)
+pendown()
+dot(50)
+penup()
+goto(0,300)
+pendown()
+dot(50)
+penup()
+goto(300,300)
+pendown()
+dot(50)
+penup()
+goto(-150,150)
+pendown()
+dot(50)
+penup()
+goto(0,0)
+pendown()
+dot(50)
+penup()
+mainloop()
+
+
+
