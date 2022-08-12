@@ -1,5 +1,7 @@
-from turtle import*
-for i in range(100):
- forword(i*2)
- left(90)
+from turtle import *
+pensize(5)
+fd(100)
+lt(90)
+fd(100)
+rt(90)
 mainloop()
