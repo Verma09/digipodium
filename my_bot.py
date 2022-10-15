@@ -12,10 +12,11 @@ def custom_command(update, context):
     update.message.reply_text('This is custom command!')
     
 def handle_response(text: str) -> str:
-    if 'Hello' in text:
+    if 'hello' in text.lower().strip():
         return 'Hey there!'
-    if 'How are you' in text:
+    if 'how are you' in text.lower().strip():
         return 'I am good, thanks!'
+    
     return 'Idk'
 
 def handle_message(update, context):
@@ -37,23 +38,24 @@ def handle_message(update, context):
 def error(update, context):
     print(f'Update {update} caused error: {context.error}')
 
+
+# Run the program
 if __name__ == '__main__':
     updater = Updater(keys.token, use_context=True)
-    dp = updater.dispatchar
-    
-    # commands
+    dp = updater.dispatcher
+
+    # Commands
     dp.add_handler(CommandHandler('start', start_command))
     dp.add_handler(CommandHandler('help', help_command))
     dp.add_handler(CommandHandler('custom', custom_command))
-    
-    # messages
+
+    # Messages
     dp.add_handler(MessageHandler(Filters.text, handle_message))
-    
-    # errors
+
+    # Log all errors
     dp.add_error_handler(error)
-    
-    # run data
+
+    # Run the bot
     updater.start_polling(1.0)
     updater.idle()
     
-# token = '5644776330:AAEJCZ8nR2WRBO7J1-kMxoDMVWInMtYFgps'

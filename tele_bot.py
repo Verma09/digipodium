@@ -1,8 +1,8 @@
-from telegram.ext import 
+from telegram.ext import *
 
 token = "5662185208:AAF53nFWZeTohp5KEcGJIiIBLbwvfFKbjUg"
 
-updater = telegram.ext.updater("5662185208:AAF53nFWZeTohp5KEcGJIiIBLbwvfFKbjUg", use_context=True)
+updater = telegram.ext.updater("5731903414:AAFqnpln8sKO81UieHrAFVeZWRACmPVZV84", use_context=True)
 dispatcher = updater.dispatcher
 
 def start(update, context):
