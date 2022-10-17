@@ -1,5 +1,6 @@
 from telegram.ext import *
 import keys 
+from news_bot_api import get_news
 
 print('starting up bot...')
 def start_command(update, context):
@@ -16,8 +17,13 @@ def handle_response(text: str) -> str:
         return 'Hey there!'
     if 'how are you' in text.lower().strip():
         return 'I am good, thanks!'
-    
-    return 'Idk'
+    if 'weather' in text.lower().strip():
+        #  code here to get weather data
+        return '20 Degrees'
+    if 'news' in text.lower().strip():
+        return '📰 '+'\n📰 '.join(get_news())
+      
+    return 'Idk, try other query!'
 
 def handle_message(update, context):
     message_type = update.message.chat.type
