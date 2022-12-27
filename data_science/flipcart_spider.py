@@ -1,27 +1,31 @@
 from dputils import scrape
 import pandas as pd
-# step1 : get the data as soup
-# step2 : create the setup dicitionaries
-# step3 : pass the dictionaries (most important)
-# step4 : repeat step 1 to step step3 until data keep coming
-# step5 : check and save data into a file.
+
+# step -1. get the data as soup obj
+# step -2. create the soup dictinary(imp)
+# step -3. pass the dictionary into the extract_many() function
+# step -4.repeat step 1 to 3 until data keep coming 
+# step -5. check and save data into a file
+
 
 # understanding the url
+#?q = for searching
+
+
 def getdata(q):
-    t = {'tag':'div', 'attrs':{'class':'_1yokD2_3Mn1Gg'}}
-    rep_items = {'tag':'div', 'attrs':{'class':'_1AtVbE col-12-12'}}
-    title = {'tag':'div', 'attrs':{'class':'_4rR01T'}}
-    price = {'tag':'div', 'attrs':{'class': '_30jeq3 _1_WHN'}}
-    link = {'tag':'a', 'attrs':{'class': '_1fQZEK'}, 'output':'href'}
-# step1
-   # query = 'laptop'
+    t = {'tag':'div','attrs':{'class':'_1YokD2 _3Mn1Gg'}}
+    rep_items ={'tag':'div','attrs':{'class':'_1AtVbE col-12-12'}}
+    title ={'tag':'div','attrs':{'class':'_4rR01T'}}
+    price={'tag':'div','attrs':{'class':'_30jeq3 _1_WHN1'}}
+    link= {'tag':'a','attrs':{'class':'_1fQZEK'},'output':'href'}
+    
     pos = 1
     all_data = []
     while True:
-        url = f'https://www.flipcart.com/search?q={laptops}&page={pos}'
+        url = f'https://www.flipkart.com/search?q={q}&page={pos}'
         print(url)
         soup = scrape.get_webpage_data(url)
-        data = scrape.extract_many(soup, target= t, items=trep_items, title = title, price = price, linl = link)
+        data = scrape.extract_many( soup,target= t, items= rep_items,title=title,price=price,link=link )
         if isinstance(data, list):
             if len(data) > 0:
                 pos += 1
@@ -29,13 +33,9 @@ def getdata(q):
             else:
                 break
         else:
-            break
-        
-    return all_data  
+            break        
+        return all_data
 
-    # use  
-# laptops = getdata('laptops')
- # pd.dataframe(laptops).to_csv('laptop_data.csv')
-
-
-
+#use
+laptops = getdata('laptops') 
+pd.DataFrame(laptops).to_csv('laptop_data.csv')        
