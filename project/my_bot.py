@@ -43,10 +43,7 @@ def handle_response(text: str) -> str:
     if 'news' in text.lower().strip():
         return '📰 '+'\n📰 '.join(get_news())
     
-   
-   
-    
-    
+ 
     return 'Idk, try other query!'
 
 def handle_message(update, context):
